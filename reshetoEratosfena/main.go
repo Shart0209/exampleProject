@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func generateSlice(x int) []int {
 	var sl []int
@@ -8,10 +10,6 @@ func generateSlice(x int) []int {
 		sl = append(sl, i)
 	}
 	return sl
-}
-
-func removeIndex(s *[]int, index int) {
-	*s = append((*s)[:index], (*s)[index+1:]...)
 }
 
 func main() {
@@ -24,11 +22,10 @@ func main() {
 		}
 		for j := i + 1; j < len(items); j++ {
 			if items[j]%p == 0 {
-				removeIndex(&items, j)
+				items = append(items[:j], items[j+1:]...) // delete element
 			}
 		}
 	}
 
 	fmt.Printf("Для n = %d\nРезультат = %v", n-1, items)
-
 }

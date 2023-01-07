@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 func generateSlice(x int) []int {
@@ -13,8 +14,10 @@ func generateSlice(x int) []int {
 }
 
 func main() {
-	n := 121
+	n := 50001
 	items := generateSlice(n)
+
+	t0 := time.Now()
 
 	for i, p := range items {
 		if p*p > n {
@@ -26,6 +29,7 @@ func main() {
 			}
 		}
 	}
+	fmt.Printf("Elapsed time: %v\n", time.Since(t0))
 
 	fmt.Printf("Для n = %d\nРезультат = %v", n-1, items)
 }
